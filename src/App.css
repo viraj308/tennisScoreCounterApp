@@ -1,0 +1,45 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.team-score {
+  margin: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.score-buttons {
+  margin-top: 20px;
+}
+
+.score-buttons button {
+  margin: 5px;
+}
+
+.winner-display {
+  margin-top: 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.clear-button {
+  margin-top: 20px;
+}
+
+.clear-button button {
+  background-color: #ff6347; /* Coral color */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.clear-button button:hover {
+  background-color: #ff4831; /* Darker coral color on hover */
+}
+
