@@ -1,14 +1,52 @@
+@font-face {
+  font-family: "Poppins";
+  src: url(/public/fonts/Poppins/Poppins-Regular.ttf);
+}
+@font-face {
+  font-family: "Poppins";
+  src: url(/public/fonts/Poppins/Poppins-Bold.ttf);
+  font-weight: 700;
+}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  /* background: linear-gradient(90deg, rgba(230, 83, 78,1) 50%,rgba(155, 185, 208, 1) 50%); */
+  background: linear-gradient(90deg, rgba(238, 198, 31,1) 50%,rgba(155, 185, 208, 1) 50%); 
+
+  font-family: "Poppins";
+  color: black;
+}
+
 .app-container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+.team-score-container {
+  display: flex;
+}
+.app-heading {
+  margin-bottom: 1.2em;
+  text-align: center;
+  font-size: 1.8rem;
+}
 
 .team-score {
   margin: 20px;
   padding: 10px;
-  border: 1px solid #ccc;
+ /*  border: 1px solid #ccc; */
+  border: 1px solid white;
   border-radius: 5px;
+  max-width: 174px;
+}
+.team-score p {
+  display: flex;
+}
+.score, .deuce-score {
+  font-size: 2rem;
+  margin-left: 1em;
 }
 
 .score-buttons {
@@ -17,12 +55,21 @@
 }
 
 .score-buttons button {
+  font-size: 1.8rem;
   margin: 5px;
+  padding: 0.3em 1.1em;
+  border-radius: 10px;
+}
+.add-button {
+  background-color: #98c377;
+}
+.deduct-button {
+  background-color: rgb(240, 64, 64);
 }
 
 .winner-display {
   margin-top: 20px;
-  font-size: 24px;
+  font-size: 28px;
   font-weight: bold;
 }
 
@@ -34,7 +81,7 @@
   background-color: #ff6347; /* Coral color */
   color: white;
   padding: 10px 20px;
-  border: none;
+  border: solid 2px white;
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;

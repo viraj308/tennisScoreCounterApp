@@ -5,6 +5,12 @@ import WinnerDisplay from './components/WinnerDisplay';
 import ClearButton from './components/ClearButton';
 import './App.css';
 
+import sound from "../src/assets/sounds/fortnite-dance.wav"
+import buttonSound from "../src/assets/sounds/button-click.wav"
+import animeWow from "../src/assets/sounds/anime-wow-sound.wav"
+import johnCena from "../src/assets/sounds/john-cena-chinese.wav"
+import jojoSound from "../src/assets/sounds/jojos-golden.mp3"
+
 function App() {
   const [team1Score, setTeam1Score] = useState(0);
   const [team2Score, setTeam2Score] = useState(0);
@@ -28,7 +34,18 @@ function App() {
     
   };
 
+  const play = () => {
+   /*  const sounds = [sound, animeWow, johnCena, jojoSound]
+    const randomIndex = Math.floor(Math.random() * sounds.length);
+    const soundToPlay = sounds[randomIndex]; */
+    new Audio(sound).play()
+  }
+  const playButton = () => {
+    new Audio(buttonSound).play()
+  }
+
   const handleScoreChange = (team, score) => {
+    playButton()
     if (team === 'team1') {
       setTeam1Score(score);
     } else if (team === 'team2') {
@@ -75,14 +92,17 @@ function App() {
 
   return (
     <div className="app-container">
+      <h1 className='app-heading'>Ping Pong Score Tracker</h1>
        <input
         type="number"
         value={targetScore}
         onChange={handleTargetScoreChange}
         placeholder="Enter target score"
       />
+      <div className='team-score-container'>
       <TeamScore teamName="Team 1" score={team1Score} deucePoint={team1ConsecutiveWins}/>
       <TeamScore teamName="Team 2" score={team2Score} deucePoint={team2ConsecutiveWins}/>
+      </div>
       <ScoreButtons
         team1Score={team1Score}
         team2Score={team2Score}
@@ -102,6 +122,7 @@ function App() {
         deuce={deuce}
         team1ConsecutiveWins={team1ConsecutiveWins}
         team2ConsecutiveWins={team2ConsecutiveWins}
+        play={play}
       />
       <ClearButton clearScores={clearScores} />
     </div>

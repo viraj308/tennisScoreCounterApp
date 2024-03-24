@@ -1,4 +1,8 @@
 import React from 'react';
+import useSound from 'use-sound';
+
+
+
 
 function ScoreButtons({ team1Score, team2Score, setTeam1Score, setTeam2Score, targetScore, deuce, setteam1ConsecutiveWins, setteam2ConsecutiveWins, team1ConsecutiveWins, team2ConsecutiveWins }) {
   const addPoint = (team) => {
@@ -40,14 +44,14 @@ function ScoreButtons({ team1Score, team2Score, setTeam1Score, setTeam2Score, ta
 
   return (
     <div className="score-buttons">
-      <button onClick={() => addPoint('team1')} /* disabled={team1Score >= targetScore} */>
-        Add Point Team 1
+      <button className='add-button' onClick={() => addPoint('team1')} /* disabled={team1Score >= targetScore} */>
+        +
       </button>
-      <button onClick={() => deductPoint('team1')}>Deduct Point Team 1</button>
-      <button onClick={() => addPoint('team2')} /* disabled={team2Score >= targetScore} */>
-        Add Point Team 2
+      <button className='deduct-button' onClick={() => deductPoint('team1')}>-</button>
+      <button className='add-button' onClick={() => addPoint('team2')} /* disabled={team2Score >= targetScore} */>
+        +
       </button>
-      <button onClick={() => deductPoint('team2')}>Deduct Point Team 2</button>
+      <button className='deduct-button' onClick={() => deductPoint('team2')}>-</button>
     </div>
   );
 }
