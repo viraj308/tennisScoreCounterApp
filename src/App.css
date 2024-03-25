@@ -1,10 +1,10 @@
 @font-face {
   font-family: "Poppins";
-  src: url(/public/fonts/Poppins/Poppins-Regular.ttf);
+  src: url(/fonts/Poppins/Poppins-Regular.ttf);
 }
 @font-face {
   font-family: "Poppins";
-  src: url(/public/fonts/Poppins/Poppins-Bold.ttf);
+  src: url(/fonts/Poppins/Poppins-Bold.ttf);
   font-weight: 700;
 }
 * {
@@ -12,7 +12,6 @@
 }
 
 body {
-  /* background: linear-gradient(90deg, rgba(230, 83, 78,1) 50%,rgba(155, 185, 208, 1) 50%); */
   background: linear-gradient(90deg, rgba(238, 198, 31,1) 50%,rgba(155, 185, 208, 1) 50%); 
 
   font-family: "Poppins";

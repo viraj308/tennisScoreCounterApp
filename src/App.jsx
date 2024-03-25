@@ -1,15 +1,12 @@
-import React, { useState } from 'react';
-import TeamScore from './components/TeamScore';
-import ScoreButtons from './components/ScoreButtons';
-import WinnerDisplay from './components/WinnerDisplay';
-import ClearButton from './components/ClearButton';
-import './App.css';
+import React, { useState } from "react";
+import TeamScore from "./components/TeamScore";
+import ScoreButtons from "./components/ScoreButtons";
+import WinnerDisplay from "./components/WinnerDisplay";
+import ClearButton from "./components/ClearButton";
+import "./App.css";
 
-import sound from "../src/assets/sounds/fortnite-dance.wav"
-import buttonSound from "../src/assets/sounds/button-click.wav"
-import animeWow from "../src/assets/sounds/anime-wow-sound.wav"
-import johnCena from "../src/assets/sounds/john-cena-chinese.wav"
-import jojoSound from "../src/assets/sounds/jojos-golden.mp3"
+import sound from "../src/assets/sounds/fortnite-dance.wav";
+import buttonSound from "../src/assets/sounds/button-click.wav";
 
 function App() {
   const [team1Score, setTeam1Score] = useState(0);
@@ -18,7 +15,6 @@ function App() {
   const [deuce, setDeuce] = useState(false);
   const [team1ConsecutiveWins, setTeam1ConsecutiveWins] = useState(0);
   const [team2ConsecutiveWins, setTeam2ConsecutiveWins] = useState(0);
-  
 
   const handleTargetScoreChange = (event) => {
     const newTargetScore = parseInt(event.target.value, 10);
@@ -31,83 +27,82 @@ function App() {
     setDeuce(false);
     setTeam1ConsecutiveWins(0);
     setTeam2ConsecutiveWins(0);
-    
   };
 
   const play = () => {
-   /*  const sounds = [sound, animeWow, johnCena, jojoSound]
-    const randomIndex = Math.floor(Math.random() * sounds.length);
-    const soundToPlay = sounds[randomIndex]; */
-    new Audio(sound).play()
-  }
+    new Audio(sound).play();
+  };
   const playButton = () => {
-    new Audio(buttonSound).play()
-  }
+    new Audio(buttonSound).play();
+  };
 
   const handleScoreChange = (team, score) => {
-    playButton()
-    if (team === 'team1') {
+    playButton();
+    if (team === "team1") {
       setTeam1Score(score);
-    } else if (team === 'team2') {
+    } else if (team === "team2") {
       setTeam2Score(score);
     }
-     // Check for deuce
-     if (team === 'team1' && team2Score === targetScore - 1 && score === targetScore - 1) {
+    // Check for deuce
+    if (
+      team === "team1" &&
+      team2Score === targetScore - 1 &&
+      score === targetScore - 1
+    ) {
       setDeuce(true);
-    } else if (team === 'team2' && team1Score === targetScore - 1 && score === targetScore - 1) {
+    } else if (
+      team === "team2" &&
+      team1Score === targetScore - 1 &&
+      score === targetScore - 1
+    ) {
       setDeuce(true);
     } else {
       setDeuce(false);
     }
 
     if (deuce) {
-      if (team === 'team1') {
+      if (team === "team1") {
         setTeam1ConsecutiveWins((prevWins) => prevWins + 1);
         setTeam2ConsecutiveWins(0); // Reset consecutive wins for the other team
-      } else if (team === 'team2') {
+      } else if (team === "team2") {
         setTeam2ConsecutiveWins((prevWins) => prevWins + 1);
         setTeam1ConsecutiveWins(0); // Reset consecutive wins for the other team
       }
-    
-   }
-
-   // Reset consecutive wins if not in deuce
-   if (!deuce) {
-    setTeam1ConsecutiveWins(0);
-    setTeam2ConsecutiveWins(0);
-  }
-  // Check for two consecutive points to win
-  /* if (deuce) {
-    // Handle the scenario outside of deuce
-    if(team1ConsecutiveWins === 2) {
-      alert("team1 won by deuce")
     }
-    if(team2ConsecutiveWins === 2) {
-      alert("team2 won by deuce")
-    }
-    
-  } */
-}
 
+    // Reset consecutive wins if not in deuce
+    if (!deuce) {
+      setTeam1ConsecutiveWins(0);
+      setTeam2ConsecutiveWins(0);
+    }
+  };
 
   return (
     <div className="app-container">
-      <h1 className='app-heading'>Ping Pong Score Tracker</h1>
-       <input
+      <h1 className="app-heading">Ping Pong Score Tracker</h1>
+      <input
         type="number"
         value={targetScore}
         onChange={handleTargetScoreChange}
         placeholder="Enter target score"
       />
-      <div className='team-score-container'>
-      <TeamScore teamName="Team 1" score={team1Score} deucePoint={team1ConsecutiveWins}/>
-      <TeamScore teamName="Team 2" score={team2Score} deucePoint={team2ConsecutiveWins}/>
+      <div className="team-score-container">
+        <TeamScore
+          teamName="Team 1"
+          score={team1Score}
+          deucePoint={team1ConsecutiveWins}
+        />
+        <TeamScore
+          teamName="Team 2"
+          score={team2Score}
+          deucePoint={team2ConsecutiveWins}
+        />
       </div>
       <ScoreButtons
         team1Score={team1Score}
         team2Score={team2Score}
-        setTeam1Score={(score) => handleScoreChange('team1', score)}
-        setTeam2Score={(score) => handleScoreChange('team2', score)}
+        setTeam1Score={(score) => handleScoreChange("team1", score)}
+        setTeam2Score={(score) => handleScoreChange("team2", score)}
         targetScore={targetScore}
         deuce={deuce}
         setteam1ConsecutiveWins={setTeam1ConsecutiveWins}
